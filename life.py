@@ -1,24 +1,8 @@
 
 import random
 
-# 1. Create the world
-world = []
 
-for row in range(5):
-    new_row = []
-
-    for column in range(5):
-        cell = random.randint(0, 1)
-        new_row.append(cell)
-
-    world.append(new_row)
-
-# 2. Display the world
-for row in world:
-    print(row)
-
-
-# 3. Count the living neighbors of a cell
+# 1. Count the living neighbors of a cell
 def count_neighbors(world, row, column):
     rows = len(world)
     columns = len(world[0])
@@ -37,9 +21,7 @@ def count_neighbors(world, row, column):
     return neighbors
 
 
-# 4. Test the function on the center cell
-print("Living neighbors:", count_neighbors(world, 2, 2))
-
+# 2. Calculate the next generation
 def next_generation(world):
     rows = len(world)
     columns = len(world[0])
@@ -66,10 +48,33 @@ def next_generation(world):
 
     return new_world
 
-for generation in range(10):
-    print(f"\nGeneration {generation + 1}:")
 
-    world = next_generation(world)
+# 3. Run the simulation
+def main():
+    
 
+    world = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0],
+    [1, 0, 1, 0, 0],
+    [0, 1, 1, 0, 0],
+    [0, 0, 0, 0, 0]
+]
+
+    print("Initial world:")
     for row in world:
         print(row)
+
+    print("Living neighbors:", count_neighbors(world, 2, 2))
+
+    for generation in range(10):
+        print(f"\nGeneration {generation + 1}:")
+
+        world = next_generation(world)
+
+        for row in world:
+            print(row)
+
+
+if __name__ == "__main__":
+    main()
