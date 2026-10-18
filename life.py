@@ -49,9 +49,8 @@ def next_generation(world):
     return new_world
 
 
-# 3. Run the simulation
 def main():
-    
+
 
     world = [
     [0, 0, 0, 0, 0],

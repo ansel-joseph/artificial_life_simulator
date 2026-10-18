@@ -2,15 +2,24 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
+import random
 
 from life import next_generation
 
 
 # 1. Create a larger world
-rows = 20
-columns = 20
+rows = 60
+columns = 60
 
-world = [[0 for _ in range(columns)] for _ in range(rows)]
+initial_density = 0.3
+
+world = [
+    [
+        1 if random.random() < initial_density else 0
+        for _ in range(columns)
+    ]
+    for _ in range(rows)
+]
 
 
 # 2. Place a glider near the center
